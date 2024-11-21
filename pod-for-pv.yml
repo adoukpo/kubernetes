@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pv-pod
+spec:
+  volumes:
+    - name: first-pv-storage
+      persistentVolumeClaim:
+        claimName: first-pv-claim
+  containers:
+    - name: first-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: first-pv-storage

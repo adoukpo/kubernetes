@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utrains
+# namespace: dev
+  labels:
+   app: utrains
+spec:
+  nodeSelector:
+        size: small
+        env: dev
+  containers:
+  - name: utrains-app
+    image: httpd

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #namespace: dev
+  name: utc-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: nginx
+        env: dev
+    spec:
+      containers:
+      - name: nginx-container
+        image: 905418036445.dkr.ecr.us-east-1.amazonaws.com/devops_repository:65
+        resources:
+          limits:
+            memory: "250Mi"
+            # cpu: "400m"
+          requests:
+            memory: "150Mi"
+            # cpu: "400m"

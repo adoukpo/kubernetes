@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app4
+ # namespace: dev
+  labels:
+   app: utrains2
+spec:
+  nodeName: ip-10-0-1-212.ec2.internal
+  # Replace nodeone.example.com with your own node name
+  containers:
+  - name: utrains-app
+    image: httpd

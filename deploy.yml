@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utc-app
+  labels:
+    app: nginx
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: nginx
+        env: dev
+    spec:
+      containers:
+      - name: nginx
+        image: 905418036445.dkr.ecr.us-east-1.amazonaws.com/devops_repository:latest
+        ports:
+        - containerPort: 8082
+      tolerations:
+      - key: "color"
+        operator: "Equal"  # 
+        value: "blue"
+        effect: "NoSchedule"

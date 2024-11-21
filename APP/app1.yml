@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: app1
+  name: app1
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app1
+      env: qa
+  template:
+    metadata:
+      labels:
+        app: app1
+        env: qa
+    spec:
+      containers:
+      - name: nginx
+        image: 905418036445.dkr.ecr.us-east-1.amazonaws.com/devops_repository:latest
+        ports:
+        - containerPort: 8082
